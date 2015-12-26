@@ -1,0 +1,24 @@
+CACHE MANIFEST
+
+# version 1.0.1
+
+CACHE:
+
+# html
+index.html
+
+# css
+source/bootstrap/css/bootstrap.min.css
+source/bootstrap/fonts/glyphicons-halflings-regular.eot
+source/bootstrap/fonts/glyphicons-halflings-regular.svg
+source/bootstrap/fonts/glyphicons-halflings-regular.ttf
+source/bootstrap/fonts/glyphicons-halflings-regular.woff
+source/bootstrap/fonts/glyphicons-halflings-regular.woff2
+source/default.css
+
+# javascript
+source/jquery-2.1.4.min.js
+source/bootstrap/js/bootstrap.min.js
+source/angular.min.js
+
+app/module.js

@@ -1,0 +1,20 @@
+.navbar-header {
+	background: #eee;
+}
+
+.navbar-header .navbar-toggle {
+	background: #fff;
+}
+
+.navbar-header .navbar-toggle .icon-bar {
+	background: gray;
+}
+
+.varlist .control-label {
+	padding-top: 7px;
+	text-align: right;
+}
+
+.varlist input {
+	text-align: right;
+}
