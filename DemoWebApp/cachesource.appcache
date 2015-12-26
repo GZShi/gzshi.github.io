@@ -22,3 +22,4 @@ source/bootstrap/js/bootstrap.min.js
 source/angular.min.js
 
 app/module.js
+app/local.js

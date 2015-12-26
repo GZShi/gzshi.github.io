@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="demoApp" manifest="cachesource.appcache.x">
+<html lang="en" ng-app="demoApp" manifest="cachesource.appcache">
 <head>
   <meta charset="UTF-8">
   <title>公式校验</title>
@@ -16,6 +16,7 @@
   <script src="source/angular.min.js"></script>
 
   <script src="app/module.js"></script>
+  <script src="app/local.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default" ng-controller="NavController">
@@ -43,67 +44,83 @@
 
   <div class="container" ng-controller="CalcController">
     <form class="form-horizontal varlist" name="varlist" ng-submit="calc()">
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.L1.$invalid,
-        'has-success': varlist.L1.$valid && varlist.L1.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-L1">L1</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="L1" ng-model="values.L1" id="var-L1" placeholder="L1" required>
+      <div class="form-group">
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.L1.$invalid,
+            'has-success': varlist.L1.$valid && varlist.L1.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-L1">L1</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="L1" ng-model="values.L1" id="var-L1" placeholder="L1" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.f.$invalid,
+            'has-success': varlist.f.$valid && varlist.f.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-f">f</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="f" ng-model="values.f" id="var-f" placeholder="f" required>
+            </div>
+          </div>
         </div>
       </div>
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.f.$invalid,
-        'has-success': varlist.f.$valid && varlist.f.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-f">f</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="f" ng-model="values.f" id="var-f" placeholder="f" required>
+
+      <div class="form-group">
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.h.$invalid,
+            'has-success': varlist.h.$valid && varlist.h.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-h">h</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="h" ng-model="values.h" id="var-h" placeholder="h" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.L.$invalid,
+            'has-success': varlist.L.$valid && varlist.L.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-L">L</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="L" ng-model="values.L" id="var-L" placeholder="L" required>
+            </div>
+          </div>
         </div>
       </div>
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.h.$invalid,
-        'has-success': varlist.h.$valid && varlist.h.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-h">h</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="h" ng-model="values.h" id="var-h" placeholder="h" required>
+
+      <div class="form-group">
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.a.$invalid,
+            'has-success': varlist.a.$valid && varlist.a.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-a">a</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="a" ng-model="values.a" id="var-a" placeholder="a" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row" ng-class="{
+            'has-error': varlist.err.$invalid,
+            'has-success': varlist.err.$valid && varlist.err.$dirty
+          }">
+            <label class="control-label col-xs-3" for="var-err">δ</label>
+            <div class="col-xs-9">
+              <input type="number" step="0.00000001" class="form-control input-sm" name="err" ng-model="values.err" id="var-err" placeholder="误差" required>
+            </div>
+          </div>
         </div>
       </div>
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.L.$invalid,
-        'has-success': varlist.L.$valid && varlist.L.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-L">L</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="L" ng-model="values.L" id="var-L" placeholder="L" required>
-        </div>
-      </div>
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.a.$invalid,
-        'has-success': varlist.a.$valid && varlist.a.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-L1">a</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="a" ng-model="values.a" id="var-a" placeholder="a" required>
-        </div>
-      </div>
+      
       <hr>
-      <div ng-class="{
-        'form-group': true,
-        'has-error': varlist.err.$invalid,
-        'has-success': varlist.err.$valid && varlist.err.$dirty
-      }">
-        <label class="control-label col-xs-2" for="var-err">δ</label>
-        <div class="col-xs-10">
-          <input type="number" step="0.00000001" class="form-control input-sm" name="err" ng-model="values.err" id="var-err" placeholder="误差" required>
-        </div>
-      </div>
+
       <button ng-disabled="!varlist.$valid" type="submit" class="btn btn-primary btn-block">计算</button>
     </form>
 

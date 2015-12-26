@@ -8,14 +8,14 @@ app.controller('NavController', ['$scope', function ($scope) {
 }]);
 
 
-app.controller('CalcController', ['$scope', function ($scope) {
+app.controller('CalcController', ['$scope', 'local', function ($scope, local) {
   $scope.values = {
-    L1: 40,
-    f: 16,
-    h: 26,
-    L: 400,
-    a: 12,
-    err: 0.00001
+    L1: local.get('var-L1') || 40,
+    f: local.get('var-f') || 16,
+    h: local.get('var-h') || 26,
+    L: local.get('var-L') || 400,
+    a: local.get('var-a') || 12,
+    err: local.get('var-err') || 0.00001
   };
   $scope.infos = {
     runtime: '',
@@ -84,6 +84,13 @@ app.controller('CalcController', ['$scope', function ($scope) {
     i.runtime = runtimeErr;
     i.result = calcResult;
     $scope.results = results;
+
+    local.set('var-L1', v.L1);
+    local.set('var-f', v.f);
+    local.set('var-h', v.h);
+    local.set('var-L', v.L);
+    local.set('var-a', v.a);
+    local.set('var-err', v.err);
   };
 
 }]);
